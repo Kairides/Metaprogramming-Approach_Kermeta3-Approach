@@ -40,24 +40,37 @@ public class Kermeta3Rule implements IRule {
 					jProj = JavaCore.create(proj);
 				}
 			}
+			
 			if(jProj == null) {
 				return (new Message("No project dsa in the workspace", Severity.ERROR));
 			}
 			
 			ArrayList<String> aspectsName = new ArrayList<>();
 			ArrayList<String> aspectsAnnotation = new ArrayList<>();
+			ArrayList<String> aspectsCheck = new ArrayList<>();
+			
+			for(String s : aspectsFields.split(",")) {
+				aspectsCheck.add(s);
+			}
+			if(aspectsCheck.size() > 1) {
+				for(String s : aspectsCheck) {
+					if(!s.startsWith(" ")) {
+						return (new Message("Seperate aspects with a commma and a space", Severity.WARNING));
+					}
+				}
+			}
 			
 			for(String s :aspectsFields.split(", ")) {
 				aspectsName.add(s);
 			}
 			
 			for(String asp : aspectsName) {
-				System.out.println("aspect "+ asp);
+				// System.out.println("aspect "+ asp);
 				try {
 					IType type = jProj.findType(asp);
-					System.out.println(type.getKey());
+					// System.out.println(type.getKey());
 					for(IMethod meth : type.getMethods()) {
-						System.out.println(meth.getSignature().toString());
+						// System.out.println(meth.getSignature().toString());
 						for(IAnnotation annot : meth.getAnnotations()) {
 							aspectsAnnotation.add(annot.getElementName());
 						}
