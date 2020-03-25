@@ -2,6 +2,7 @@ package rules;
 
 import java.util.ArrayList;
 import org.eclipse.core.resources.*;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.*;
 import org.eclipse.gemoc.dsl.Dsl;
 import org.eclipse.gemoc.dsl.Entry;
@@ -31,15 +32,12 @@ public class Kermeta3Rule implements IRule {
 	public Message execute(Entry entry) {
 		if("k3".matches(entry.getKey())) {
 			String aspectsFields = entry.getValue();
+			
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+			IFile file = root.getFile(new Path(entry.eResource().getURI().toPlatformString(true)));
 			
-			IJavaProject jProj = null;
-			
-			for(IProject proj : root.getProjects()) {
-				if(proj.getName().endsWith("dsa")) {
-					jProj = JavaCore.create(proj);
-				}
-			}
+			IProject proj = file.getProject();
+			IJavaProject jProj = JavaCore.create(proj);
 			
 			if(jProj == null) {
 				return (new Message("No project dsa in the workspace", Severity.ERROR));
