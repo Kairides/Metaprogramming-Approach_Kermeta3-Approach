@@ -21,7 +21,7 @@ public class XtextRule implements IRule{
 		}
 		
 		if(!entriesNames.contains("xtext")) {
-			return (new Message("Missing entry \"xtext\"", Severity.ERROR));
+			return (new Message("Missing entry \"xtext\"", Severity.WARNING));
 		}
 			
 		return (new Message("",Severity.DEFAULT));

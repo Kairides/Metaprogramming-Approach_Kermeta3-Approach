@@ -50,6 +50,11 @@ public class Kermeta3Rule implements IRule {
 			for(String s : aspectsFields.split(",")) {
 				aspectsCheck.add(s);
 			}
+			
+			if(aspectsCheck.isEmpty()) {
+				return (new Message("No aspects in the \"k3\" entry", Severity.WARNING));
+			}
+			
 			if(aspectsCheck.size() > 1) {
 				for(String s : aspectsCheck) {
 					if(!s.startsWith(" ")) {
