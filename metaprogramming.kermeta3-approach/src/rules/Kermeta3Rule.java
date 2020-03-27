@@ -50,15 +50,12 @@ public class Kermeta3Rule implements IRule {
 			for(String s : aspectsFields.split(",")) {
 				aspectsCheck.add(s);
 			}
-			
-			if(aspectsCheck.isEmpty()) {
-				return (new Message("No aspects in the \"k3\" entry", Severity.WARNING));
-			}
-			
+				
 			if(aspectsCheck.size() > 1) {
+				aspectsCheck.remove(0);
 				for(String s : aspectsCheck) {
 					if(!s.startsWith(" ")) {
-						return (new Message("Seperate aspects with a commma and a space", Severity.WARNING));
+						return (new Message("Seperate aspects with a commma and a space et ma bite", Severity.WARNING));
 					}
 				}
 			}
@@ -71,15 +68,13 @@ public class Kermeta3Rule implements IRule {
 				// System.out.println("aspect "+ asp);
 				try {
 					IType type = jProj.findType(asp);
-					// System.out.println(type.getKey());
 					for(IMethod meth : type.getMethods()) {
-						// System.out.println(meth.getSignature().toString());
 						for(IAnnotation annot : meth.getAnnotations()) {
 							aspectsAnnotation.add(annot.getElementName());
 						}
 					}
-				} catch (JavaModelException e) {
-					return (new Message("No aspect matching "+asp+ " in the k3dsa project", Severity.ERROR));
+				} catch (Exception e) {
+					return (new Message("No aspect matching \""+asp+ "\" in the k3dsa project", Severity.ERROR));
 				}
 			}
 			
