@@ -55,7 +55,7 @@ public class Kermeta3Rule implements IRule {
 				aspectsCheck.remove(0);
 				for(String s : aspectsCheck) {
 					if(!s.startsWith(" ")) {
-						return (new Message("Seperate aspects with a commma and a space et ma bite", Severity.WARNING));
+						return (new Message("Seperate aspects with a commma and a space", Severity.WARNING));
 					}
 				}
 			}
