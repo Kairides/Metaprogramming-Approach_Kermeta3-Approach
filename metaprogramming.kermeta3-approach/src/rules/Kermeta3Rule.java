@@ -6,10 +6,9 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.*;
 import org.eclipse.gemoc.dsl.Dsl;
 import org.eclipse.gemoc.dsl.Entry;
-
-import metaprogramming.extensionpoint.IRule;
-import metaprogramming.extensionpoint.Message;
-import metaprogramming.extensionpoint.Severity;
+import org.eclipse.gemoc.dsl.approach.IRule;
+import org.eclipse.gemoc.dsl.approach.Message;
+import org.eclipse.gemoc.dsl.approach.Severity;
 
 public class Kermeta3Rule implements IRule {
 
@@ -55,7 +54,7 @@ public class Kermeta3Rule implements IRule {
 				aspectsCheck.remove(0);
 				for(String s : aspectsCheck) {
 					if(!s.startsWith(" ")) {
-						return (new Message("Seperate aspects with a commma and a space et ma bite", Severity.WARNING));
+						return (new Message("Seperate aspects with a comma and a space", Severity.WARNING));
 					}
 				}
 			}
@@ -74,16 +73,16 @@ public class Kermeta3Rule implements IRule {
 						}
 					}
 				} catch (Exception e) {
-					return (new Message("No aspect matching \""+asp+ "\" in the k3dsa project", Severity.ERROR));
+					return (new Message("No aspect matching \""+asp+ "\" in the project", Severity.ERROR));
 				}
 			}
 			
 			if(!aspectsAnnotation.contains("Main")) {
-				return (new Message("No method annotated with \"Main\" in the k3dsa project", Severity.ERROR));
+				return (new Message("No method annotated with \"Main\" in the project", Severity.ERROR));
 			}
 			
 			if(!aspectsAnnotation.contains("InitializeModel")) {
-				return (new Message("No method annotated with \"InitializeModel\" in the k3dsa project", Severity.ERROR));
+				return (new Message("No method annotated with \"InitializeModel\" in the project", Severity.ERROR));
 			}
 			
 		}
