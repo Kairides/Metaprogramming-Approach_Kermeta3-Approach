@@ -6,10 +6,16 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.*;
 import org.eclipse.gemoc.dsl.Dsl;
 import org.eclipse.gemoc.dsl.Entry;
-import org.eclipse.gemoc.dsl.approach.IRule;
-import org.eclipse.gemoc.dsl.approach.Message;
-import org.eclipse.gemoc.dsl.approach.Severity;
+import org.eclipse.gemoc.xdsmlframework.api.extensions.metaprog.IRule;
+import org.eclipse.gemoc.xdsmlframework.api.extensions.metaprog.Severity;
+import org.eclipse.gemoc.xdsmlframework.api.extensions.metaprog.Message;
 
+/**
+ * Validation rule used by the Kermeta3 meta-programming approach
+ * 
+ * @author GUEGUEN Ronan
+ *
+ */
 public class Kermeta3Rule implements IRule {
 
 	@Override
