@@ -64,7 +64,6 @@ public class Kermeta3Rule implements IRule {
 			}
 			
 			for(String asp : aspectsName) {
-				// System.out.println("aspect "+ asp);
 				try {
 					IType type = jProj.findType(asp);
 					for(IMethod meth : type.getMethods()) {

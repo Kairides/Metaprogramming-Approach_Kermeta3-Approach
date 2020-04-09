@@ -2,9 +2,9 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="metaprogramming.extensionpoint">
+         point="org.eclipse.gemoc.gemoc_language_workbench.metaprog">
       <approach
-            name="Kermeta3 Approach"
+            name="kermeta3"
             validator="metaprogramming.kermeta3approach.Kermeta3RuleProvider">
       </approach>
    </extension>
