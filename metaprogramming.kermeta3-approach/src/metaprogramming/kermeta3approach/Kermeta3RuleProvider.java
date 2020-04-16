@@ -6,8 +6,8 @@ import java.util.Set;
 
 import org.eclipse.gemoc.xdsmlframework.api.extensions.metaprog.IRule;
 import org.eclipse.gemoc.xdsmlframework.api.extensions.metaprog.IRuleProvider;
+import org.eclipse.gemoc.xdsmlframework.api.extensions.metaprog.EcoreRule;
 
-import metaprogramming.ecoreapproach.EcoreRuleProvider;
 import rules.*;
 
 /**
@@ -23,7 +23,7 @@ public class Kermeta3RuleProvider implements IRuleProvider {
 	 * Creates a RuleProvider for the Kermeta3 meta-programming approach, contains rules from the Ecore RuleProvider
 	 */
 	public Kermeta3RuleProvider() {
-		ruleSet.addAll(new EcoreRuleProvider().getValidationRules());
+		ruleSet.add(new EcoreRule());
 		ruleSet.add(new Kermeta3Rule());
 	}
 	
